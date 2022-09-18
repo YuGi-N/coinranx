@@ -14,6 +14,9 @@ const CoinData: NextPage = () => {
     const { data: coinData, error: coinError } = useSWR<any>(id ? `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false` : null, fetcher);
     const { data: coinHistoryData, error: coinHistoryError } = useSWR(id ? `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=7&interval=daily` : null, fetcher);
 
+    console.log(coinData);
+    console.log(coinHistoryData);
+
 	if(coinError || coinHistoryError) {
 		return (
 			<div>
