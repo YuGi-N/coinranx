@@ -45,16 +45,16 @@ const CoinChart = ({ data, coinData }: CoinChartProps) => {
             },
         };
     
-        const dateLabels: string[] = data.prices.map((price: any) => {
-            return new Date(price[0]);
-        });
+        // const dateLabels: string[] = data.prices.map((price: any) => {
+        //     return new Date(price[0]);
+        // });
     
         const prices = data.prices.map((price: any) => {
             return price[1];
         });
     
         const chartData: ChartData<"line"> = {
-            labels: dateLabels,
+            labels: [1,2,3,4,5,6,7],
             datasets: [
                 {
                     label: 'Price',
