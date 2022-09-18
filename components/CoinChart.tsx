@@ -50,7 +50,9 @@ const CoinChart = ({ data, coinData }: CoinChartProps) => {
         // });
     
         const prices = data.prices.map((price: any) => {
-            return parseInt(price[1]);
+            if(isNaN(parseInt(price[1]))) {
+                return parseInt(price[1]);
+            }
         });
 
         console.log(prices);
