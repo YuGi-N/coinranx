@@ -30,48 +30,52 @@ ChartJS.defaults.color = 'rgb(255, 255, 255)';
 
 const CoinChart = ({ data, coinData }: CoinChartProps) => {
 
-    const options: ChartOptions = {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top' as const,
+    if(data && coinData) {
+        const options: ChartOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top' as const,
+                },
+                title: {
+                    display: true,
+                    text: `${coinData.name}`
+                },
+                
             },
-            title: {
-                display: true,
-                text: `${coinData.name}`
-            },
-            
-        },
-    };
-
-    const dateLabels: string[] = data && data.prices.map((price: any) => {
-        return new Date(price[0]).toLocaleDateString();
-    });
-
-    const prices = data && data.prices.map((price: any) => {
-        return price[1];
-    });
-
-    console.log(dateLabels);
-    console.log(prices);
-
-    const chartData: ChartData<"line"> = {
-        labels: dateLabels,
-        datasets: [
-            {
-                label: 'Price',
-                data: prices,
-                borderColor: 'rgb(80, 171, 70)',
-                backgroundColor: 'rgb(106, 224, 93)',
-            },
-        ]
-    };
+        };
+    
+        const dateLabels: string[] = data.prices.map((price: any) => {
+            return new Date(price[0]).toLocaleDateString();
+        });
+    
+        const prices = data.prices.map((price: any) => {
+            return price[1];
+        });
+    
+        const chartData: ChartData<"line"> = {
+            labels: dateLabels,
+            datasets: [
+                {
+                    label: 'Price',
+                    data: prices,
+                    borderColor: 'rgb(80, 171, 70)',
+                    backgroundColor: 'rgb(106, 224, 93)',
+                },
+            ]
+        };
+    
+        return (
+            <div className='w-full md:max-w-4xl bg-neutral-900 h-auto md:rounded-md flex flex-col md:flex-row p-8'>
+                { prices && dateLabels && <Line data={chartData} options={options} /> }
+            </div>
+        )
+    }
 
     return (
-        <div className='w-full md:max-w-4xl bg-neutral-900 h-auto md:rounded-md flex flex-col md:flex-row p-8'>
-            { prices && dateLabels && <Line data={chartData} options={options} /> }
-        </div>
+        <></>
     )
+    
 }
 
 export default CoinChart;
