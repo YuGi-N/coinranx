@@ -50,7 +50,7 @@ const CoinChart = ({ data, coinData }: CoinChartProps) => {
         // });
     
         const prices = data.prices.map((price: any) => {
-            return price[1];
+            return parseInt(price[1]);
         });
 
         console.log(prices);
