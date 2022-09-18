@@ -45,16 +45,16 @@ const CoinChart = ({ data, coinData }: CoinChartProps) => {
         return new Intl.DateTimeFormat(undefined).format(price[0]);
     });
 
-    const prices = data.prices.map((price: any) => {
-        return price[1];
-    });
+    // const prices = data.prices.map((price: any) => {
+    //     return price[1];
+    // });
 
     const chartData: ChartData<"line"> = {
         labels: dateLabels,
         datasets: [
             {
                 label: 'Price',
-                data: prices,
+                data: [1,2,3,4,5,6,7],
                 borderColor: 'rgb(80, 171, 70)',
                 backgroundColor: 'rgb(106, 224, 93)',
             },
