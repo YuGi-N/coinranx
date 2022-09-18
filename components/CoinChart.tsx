@@ -30,53 +30,44 @@ ChartJS.defaults.color = 'rgb(255, 255, 255)';
 
 const CoinChart = ({ data, coinData }: CoinChartProps) => {
 
-    if(data && coinData) {
-        const options: ChartOptions = {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top' as const,
-                },
-                title: {
-                    display: true,
-                    text: `${coinData.name}`
-                },
-                
+    const options: ChartOptions = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top' as const,
             },
-        };
-    
-        const dateLabels: string[] = data.prices.map((price: any) => {
-            return new Date(price[0]);
-        });
-    
-        const prices = data.prices.map((price: any) => {
-                return parseInt(price[1]);
-        });
+            title: {
+                display: true,
+                text: `${coinData.name}`
+            },
+            
+        },
+    };
 
-        console.log(prices);
-        console.log(dateLabels);
-    
-        const chartData: ChartData<"line"> = {
-            labels: dateLabels,
-            datasets: [
-                {
-                    label: 'Price',
-                    data: prices,
-                    borderColor: 'rgb(80, 171, 70)',
-                    backgroundColor: 'rgb(106, 224, 93)',
-                },
-            ]
-        };
-    
-        return (
-            <div className='w-full md:max-w-4xl bg-neutral-900 h-auto md:rounded-md flex flex-col md:flex-row p-8'>
-                { prices && <Line data={chartData} options={options} /> }
-            </div>
-        )
-    }
+    const dateLabels: string[] = data.prices.map((price: any) => {
+        return new Date(price[0]).toLocaleDateString();
+    });
+
+    const prices = data.prices.map((price: any) => {
+            return parseInt(price[1]);
+    });
+
+    const chartData: ChartData<"line"> = {
+        labels: dateLabels,
+        datasets: [
+            {
+                label: 'Price',
+                data: prices,
+                borderColor: 'rgb(80, 171, 70)',
+                backgroundColor: 'rgb(106, 224, 93)',
+            },
+        ]
+    };
 
     return (
-        <></>
+        <div className='w-full md:max-w-4xl bg-neutral-900 h-auto md:rounded-md flex flex-col md:flex-row p-8'>
+            <Line data={chartData} options={options} />
+        </div>
     )
     
 }

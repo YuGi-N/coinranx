@@ -29,29 +29,23 @@ const CoinData: NextPage = () => {
 		)
 	}
 
-    if(coinData && coinHistoryData) {
-        return (
-            <div>
-                <Head>
-                    <title>{coinData && coinData.name}</title>
-                </Head>
-                <Header />
-                <div className='w-full flex flex-col items-center md:mt-8 font-inter'>
-                    <>
-                        { coinData && <CoinCard data={coinData} /> }
-                    </>
-                </div>
-                <div className='w-full flex flex-col items-center md:mt-8 font-inter'>
-                    <>
-                        { coinHistoryData && coinData && <CoinChart data={coinHistoryData} coinData={coinData} />}
-                    </>
-                </div>
-            </div>
-        )
-    }
-
     return (
-        <></>
+        <div>
+            <Head>
+                <title>{coinData && coinData.name}</title>
+            </Head>
+            <Header />
+            <div className='w-full flex flex-col items-center md:mt-8 font-inter'>
+                <>
+                    { coinData && <CoinCard data={coinData} /> }
+                </>
+            </div>
+            <div className='w-full flex flex-col items-center md:mt-8 font-inter'>
+                <>
+                    { coinHistoryData && coinData && <CoinChart data={coinHistoryData} coinData={coinData} />}
+                </>
+            </div>
+        </div>
     )
 }
 
