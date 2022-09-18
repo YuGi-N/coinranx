@@ -28,25 +28,25 @@ ChartJS.register(
 
 const CoinChart = ({ data, coinData }: CoinChartProps) => {
 
-    // const options: ChartOptions = {
-    //     responsive: true,
-    //     plugins: {
-    //         legend: {
-    //             position: 'right',
-    //         },
-    //         title: {
-    //             display: true,
-    //             text: `${coinData.name}`
-    //         },
-    //     },
-    // };
+    const options: ChartOptions = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'right',
+            },
+            title: {
+                display: true,
+                text: `${coinData.name}`
+            },
+        },
+    };
 
     const dateLabels: string[] = data.prices.map((price: any) => {
-        return new Date(price[0]).toLocaleDateString().toString();
+        return new Intl.DateTimeFormat(undefined).format(price[0]);
     });
 
     const prices = data.prices.map((price: any) => {
-            return parseInt(price[1]);
+        return price[1];
     });
 
     const chartData: ChartData<"line"> = {
@@ -63,7 +63,7 @@ const CoinChart = ({ data, coinData }: CoinChartProps) => {
 
     return (
         <div className='w-full md:max-w-4xl bg-neutral-900 h-auto md:rounded-md flex flex-col md:flex-row p-8'>
-            <Line data={chartData} />
+            <Line data={chartData} options={options} />
         </div>
     )
 

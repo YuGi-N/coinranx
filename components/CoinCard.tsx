@@ -18,7 +18,7 @@ const CoinCard = ({ data }:CoinCardProps) => {
             </div>
             <div className='flex flex-col flex-grow'>
                 <div className='w-full flex flex-row items-center justify-center h-32 gap-8 flex-shrink text-xl border-b border-neutral-700'>
-                    <p className='inline-block'>{`${price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}$`}</p>
+                    <p className='inline-block'>{Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(price)}</p>
                     <div className='flex flex-row items-center gap-1'>
                         {
                             percentageChange > 0 ? 
@@ -34,10 +34,10 @@ const CoinCard = ({ data }:CoinCardProps) => {
                     </div>
                 </div>
                 <div className='flex-grow grid grid-cols-2 items-center text-center w-full h-60 md:h-auto'>
-                    <p className='h-full w-full flex items-center justify-center text-lg'>{`All Time High: ${data.market_data.ath.usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}$`}</p>
-                    <p className='h-full w-full flex items-center justify-center text-lg'>{`All Time Low: ${data.market_data.atl.usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}$`}</p>
+                    <p className='h-full w-full flex items-center justify-center text-lg'>{`All Time High: ${Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(data.market_data.ath.usd)}`}</p>
+                    <p className='h-full w-full flex items-center justify-center text-lg'>{`All Time Low: ${Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(data.market_data.atl.usd)}`}</p>
                     <p className='h-full w-full flex items-center justify-center text-lg'>{`Market cap rank: ${data.market_cap_rank}`}</p>
-                    <p className='h-full w-full flex items-center justify-center text-lg'>{`Market cap: ${data.market_data.market_cap.usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}$`}</p>
+                    <p className='h-full w-full flex items-center justify-center text-lg'>{`Market cap: ${Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(data.market_data.market_cap.usd)}`}</p>
                 </div>
             </div>
         </div>

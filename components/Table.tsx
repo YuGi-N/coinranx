@@ -55,7 +55,7 @@ const Table = ({ data }: TableProps) => {
                                 <td className='flex flex-row justify-center items-center'><picture className='mt-3'><img className='w-6 h-6' src={ coin.image } alt={ coin.id + ' logo'} /></picture></td>
                                 <td>{ coin.name }</td>
                                 <td>{ coin.symbol }</td>
-                                <td>{ `${coin.current_price}$` }</td>
+                                <td>{ `${Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency'}).format(coin.current_price)}` }</td>
                                 <td className='flex flex-row justify-center items-center'>{ coin.price_change_24h < 0 ? <HiArrowDown className='text-red-500' /> : <HiArrowUp className='text-green-500' /> }</td>
                                 <td className='pl-12'>{favourites.includes(coin.id) ? <HiHeart className='text-pink-500 h-6 w-6 cursor-pointer' onClick={(e) => removeFavourite(e, coin.id)} /> : <HiOutlineHeart className='text-pink-500 h-6 w-6 cursor-pointer' onClick={(e) => addFavourite(e, coin.id)}/>}</td>
                             </tr>
