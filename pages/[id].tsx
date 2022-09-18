@@ -41,11 +41,11 @@ const CoinData: NextPage = () => {
                         { coinData && <CoinCard data={coinData} /> }
                     </>
                 </div>
-                {/* <div className='w-full flex flex-col items-center md:mt-8 font-inter'>
+                <div className='w-full flex flex-col items-center md:mt-8 font-inter'>
                     <>
                         { coinHistoryData && coinData && <CoinChart data={coinHistoryData} coinData={coinData} />}
                     </>
-                </div> */}
+                </div>
             </div>
         )
     }

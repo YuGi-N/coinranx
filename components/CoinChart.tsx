@@ -46,7 +46,7 @@ const CoinChart = ({ data, coinData }: CoinChartProps) => {
         };
     
         const dateLabels: string[] = data.prices.map((price: any) => {
-            return new Date(price[0]).toLocaleDateString();
+            return new Date(price[0]);
         });
     
         const prices = data.prices.map((price: any) => {
