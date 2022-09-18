@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Head from 'next/head';
 import useSWR from 'swr';
 import Header from '../components/Header';
 import Table from '../components/Table';
@@ -11,6 +12,9 @@ const Home: NextPage = () => {
 	if(error) {
 		return (
 			<div>
+				<Head>
+					<title>Coinranx</title>
+				</Head>
 				<Header />
 				<div className='w-full h-screen flex justify-center items-center font-inter'>
 					<h1>Unable to retrieve coin data at the moment. Check again later.</h1>
@@ -21,6 +25,9 @@ const Home: NextPage = () => {
 
 	return (
 		<div>
+			<Head>
+				<title>Coinranx</title>
+			</Head>
 			<>
 				<Header />
 				<div className='w-full flex flex-row justify-center items-center my-8 ml-2'>
