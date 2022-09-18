@@ -52,6 +52,9 @@ const CoinChart = ({ data, coinData }: CoinChartProps) => {
         return price[1];
     });
 
+    console.log(dateLabels);
+    console.log(prices);
+
     const chartData: ChartData<"line"> = {
         labels: dateLabels,
         datasets: [
