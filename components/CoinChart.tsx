@@ -52,6 +52,8 @@ const CoinChart = ({ data, coinData }: CoinChartProps) => {
         const prices = data.prices.map((price: any) => {
             return price[1];
         });
+
+        console.log(prices);
     
         const chartData: ChartData<"line"> = {
             labels: [1,2,3,4,5,6,7],
