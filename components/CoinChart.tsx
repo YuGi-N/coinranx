@@ -67,7 +67,7 @@ const CoinChart = ({ data, coinData }: CoinChartProps) => {
     
         return (
             <div className='w-full md:max-w-4xl bg-neutral-900 h-auto md:rounded-md flex flex-col md:flex-row p-8'>
-                { prices && dateLabels && <Line data={chartData} options={options} /> }
+                { prices && <Line data={chartData} options={options} /> }
             </div>
         )
     }
