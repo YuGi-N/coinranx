@@ -11,6 +11,17 @@ const Favourites: NextPage = () => {
     const storedFavourites = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('favourites')!) : null;
     const { data, error } = useSWR(storedFavourites && storedFavourites.length !== 0 ? `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&ids=${encodeURIComponent(storedFavourites)}` : null, fetcher);
 
+	if(error) {
+		return (
+			<div>
+				<Header />
+				<div className='w-full h-screen flex justify-center items-center font-inter'>
+					<h1>Unable to retrieve coin data at the moment. Check again later.</h1>
+				</div>
+			</div>
+		)
+	}
+
 	if(data) {
 		return (
 			<div>

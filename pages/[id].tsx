@@ -13,6 +13,17 @@ const CoinData: NextPage = () => {
     const { data: coinData, error: coinError } = useSWR(id ? `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false` : null, fetcher);
     const { data: coinHistoryData, error: coinHistoryError } = useSWR(id ? `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=7&interval=daily` : null, fetcher);
 
+	if(coinError || coinHistoryError) {
+		return (
+			<div>
+				<Header />
+				<div className='w-full h-screen flex justify-center items-center font-inter'>
+					<h1>Unable to retrieve coin data at the moment. Check again later.</h1>
+				</div>
+			</div>
+		)
+	}
+
     return (
         <div>
             <Header />
