@@ -32,7 +32,7 @@ const CoinChart = ({ data, coinData }: CoinChartProps) => {
         responsive: true,
         plugins: {
             legend: {
-                position: 'top' as const,
+                position: 'right',
             },
             title: {
                 display: true,
@@ -43,7 +43,7 @@ const CoinChart = ({ data, coinData }: CoinChartProps) => {
     };
 
     const dateLabels: string[] = data.prices.map((price: any) => {
-        return new Date(price[0]).toLocaleDateString();
+        return new Date(price[0]).toLocaleDateString().toString();
     });
 
     const prices = data.prices.map((price: any) => {
