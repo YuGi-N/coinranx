@@ -45,20 +45,19 @@ const CoinChart = ({ data, coinData }: CoinChartProps) => {
             },
         };
     
-        // const dateLabels: string[] = data.prices.map((price: any) => {
-        //     return new Date(price[0]);
-        // });
+        const dateLabels: string[] = data.prices.map((price: any) => {
+            return new Date(price[0]);
+        });
     
         const prices = data.prices.map((price: any) => {
-            if(isNaN(parseInt(price[1]))) {
                 return parseInt(price[1]);
-            }
         });
 
         console.log(prices);
+        console.log(dateLabels);
     
         const chartData: ChartData<"line"> = {
-            labels: [1,2,3,4,5,6,7],
+            labels: dateLabels,
             datasets: [
                 {
                     label: 'Price',
