@@ -8,7 +8,7 @@ interface CoinChartProps {
 const CoinChart = ({ data, coinData }: CoinChartProps) => {
 
     const chartData = data.prices.map((price: any, index: number) => {
-        return {date: Intl.DateTimeFormat(undefined).format(price[0]), price: parseInt(price[1])};
+        return {date: Intl.DateTimeFormat(undefined).format(price[0]), price: price[1]};
     });
 
     return (
